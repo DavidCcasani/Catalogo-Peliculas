@@ -1,0 +1,25 @@
+<h2>Editar Película</h2>
+
+<form (ngSubmit)="guardarCambios()">
+  <label>
+    Título:
+    <input [(ngModel)]="pelicula.titulo" name="titulo" required />
+  </label><br>
+
+  <label>
+    Género:
+    <input [(ngModel)]="pelicula.genero" name="genero" required />
+  </label><br>
+
+  <label>
+    Año:
+    <input type="number" [(ngModel)]="pelicula.anio" name="anio" required />
+  </label><br>
+
+  <label>
+    Director:
+    <input [(ngModel)]="pelicula.director" name="director" required />
+  </label><br>
+
+  <button type="submit">Guardar Cambios</button>
+</form>

@@ -11,5 +11,7 @@ export const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'peliculas', component: PeliculasComponent },
   { path: 'pelicula/:id', component: PeliculaDetalleComponent },
-  { path: '**', component: NotFoundComponent }
+  { path: 'agregar', loadComponent: () => import('./pages/agregar-pelicula/agregar-pelicula.component').then(m => m.AgregarPeliculaComponent) },
+  { path: 'editar/:id', loadComponent: () => import('./pages/editar-pelicula/editar-pelicula.component').then(m => m.EditarPeliculaComponent) },
+  { path: '**', component: NotFoundComponent }, // ← ESTA VA AL FINAL
 ];
