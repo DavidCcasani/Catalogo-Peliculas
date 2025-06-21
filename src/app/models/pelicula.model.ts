@@ -4,4 +4,6 @@ export interface Pelicula {
   director: string;
   genero: string;
   anio: number;
+  imagen?: string; 
+  descripcion?: string;
 }

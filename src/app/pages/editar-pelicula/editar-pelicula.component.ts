@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './editar-pelicula.component.html',
+  styleUrls: ['./editar-pelicula.component.css']
 })
 export class EditarPeliculaComponent implements OnInit {
   peliculaId: string = '';

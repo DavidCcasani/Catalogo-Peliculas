@@ -1,0 +1,16 @@
+.navbar {
+  background-color: #000000;
+  padding: 15px 30px;
+  display: flex;
+  gap: 20px;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+.navbar a {
+  color: white;
+  font-weight: bold;
+}
+
+.navbar a.activo {
+  border-bottom: 2px solid #ffffff;
+}

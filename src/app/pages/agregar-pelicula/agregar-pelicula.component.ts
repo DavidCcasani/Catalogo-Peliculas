@@ -10,6 +10,7 @@ import { Pelicula } from '../../models/pelicula.model';
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './agregar-pelicula.component.html',
+  styleUrls: ['./agregar-pelicula.component.css']
 })
 export class AgregarPeliculaComponent {
   pelicula: Pelicula = {
@@ -21,11 +22,12 @@ export class AgregarPeliculaComponent {
 
   constructor(private peliculasService: PeliculasService, private router: Router) {}
 
-guardar() {
-  if (this.pelicula.titulo && this.pelicula.director && this.pelicula.anio) {
+  guardar() {
     this.peliculasService.agregarPelicula(this.pelicula).then(() => {
-      this.router.navigate(['/peliculas']); // ← Redirección aquí
+      alert('Película guardada con éxito');
+      this.router.navigate(['/peliculas']);
+    }).catch(err => {
+      alert('Error al guardar: ' + err.message);
     });
   }
-}
 }

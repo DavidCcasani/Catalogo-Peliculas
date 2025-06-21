@@ -1,34 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+/* ===== Estilo Global: Fondo negro y letras blancas ===== */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  background-color: black;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Quitar decoraciones de enlaces y usar color blanco */
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
 .navbar {
-  background-color: #2c3e50;
-  padding: 10px 20px;
+  background-color: #000000;
+  padding: 15px 30px;
   display: flex;
   gap: 20px;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
 }
 
 .navbar a {
   color: white;
-  text-decoration: none;
   font-weight: bold;
-  padding: 8px 12px;
-  border-radius: 5px;
-  transition: background 0.3s ease;
 }
 
-.navbar a:hover {
-  background-color: #34495e;
-}
-
-.navbar .activo {
-  background-color: #1abc9c;
-}
-
-.contenido {
-  padding: 20px;
+.navbar a.activo {
+  border-bottom: 2px solid #ffffff;
 }

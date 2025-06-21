@@ -1,13 +1,20 @@
-<h2>Películas</h2>
-<a routerLink="/agregar" class="btn">Agregar nueva</a>
+<div class="header">
+  <h2>Películas</h2>
+  <a routerLink="/agregar" class="btn-agregar">Agregar nueva</a>
+</div>
 
-<ul *ngIf="peliculas.length > 0; else vacio">
-  <li *ngFor="let pelicula of peliculas">
-    <strong>{{ pelicula.titulo }}</strong> - {{ pelicula.director }} ({{ pelicula.anio }})
-    <button (click)="editar(pelicula.id)">Editar</button>
-    <button (click)="eliminar(pelicula.id!)">Eliminar</button>
-  </li>
-</ul>
+<div class="lista">
+  <div class="tarjeta" *ngFor="let pelicula of peliculas">
+    <a [routerLink]="['/pelicula', pelicula.id]" *ngIf="pelicula.imagen">
+      <img [src]="pelicula.imagen" alt="{{pelicula.titulo}}" class="portada">
+    </a>
+
+    <div class="acciones">
+      <button (click)="editar(pelicula.id)">Editar</button>
+      <button (click)="eliminar(pelicula.id!)">Eliminar</button>
+    </div>
+  </div>
+</div>
 
 <ng-template #vacio>
   <p>No hay películas registradas.</p>

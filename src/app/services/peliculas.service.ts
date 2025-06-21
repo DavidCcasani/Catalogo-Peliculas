@@ -32,8 +32,8 @@ export class PeliculasService {
 
   // Crear una nueva película
   agregarPelicula(pelicula: Pelicula) {
-    const peliculasRef = collection(this.firestore, 'peliculas');
-    return addDoc(peliculasRef, pelicula);
+    const Ref = collection(this.firestore, 'peliculas');
+    return addDoc(Ref, pelicula); // esto devuelve una Promise
   }
 
   // Actualizar una película existente
@@ -42,10 +42,10 @@ export class PeliculasService {
     return updateDoc(peliculaDoc, { ...pelicula });
   }
 
-eliminarPelicula(id: string) {
-  const docRef = doc(this.firestore, `peliculas/${id}`);
-  return deleteDoc(docRef);
-}
+  eliminarPelicula(id: string) {
+    const docRef = doc(this.firestore, `peliculas/${id}`);
+    return deleteDoc(docRef);
+  }
 
   // Obtener película por ID
   getPeliculaPorId(id: string): Observable<Pelicula> {

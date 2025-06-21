@@ -1,25 +1,33 @@
 <h2>Agregar Película</h2>
 
 <form (ngSubmit)="guardar()">
-  <label>
-    Título:
-    <input [(ngModel)]="pelicula.titulo" name="titulo" required />
-  </label><br>
+    <label>
+        Título:
+        <input [(ngModel)]="pelicula.titulo" name="titulo" required />
+    </label><br>
 
-  <label>
-    Género:
-    <input [(ngModel)]="pelicula.genero" name="genero" required />
-  </label><br>
+    <label>
+        Género:
+        <input [(ngModel)]="pelicula.genero" name="genero" required />
+    </label><br>
 
-  <label>
-    Año:
-    <input type="number" [(ngModel)]="pelicula.anio" name="anio" required />
-  </label><br>
+    <label>
+        Año:
+        <input type="number" [(ngModel)]="pelicula.anio" name="anio" required />
+    </label><br>
 
-  <label>
-    Director:
-    <input [(ngModel)]="pelicula.director" name="director" required />
-  </label><br>
+    <label>
+        Director:
+        <input [(ngModel)]="pelicula.director" name="director" required />
+    </label><br>
 
-  <button type="submit">Guardar</button>
+    <label>
+        Imagen (URL):
+        <input [(ngModel)]="pelicula.imagen" name="imagen" placeholder="https://..." />
+    </label><br>
+    <label>
+        Descripción:
+        <textarea [(ngModel)]="pelicula.descripcion" name="descripcion"></textarea>
+    </label><br>
+    <button type="submit">Guardar</button>
 </form>
