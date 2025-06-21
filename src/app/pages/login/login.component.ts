@@ -1,11 +1,28 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Router } from '@angular/router';
+import { getAuth, signInWithEmailAndPassword } from '@angular/fire/auth';
 
 @Component({
-  selector: 'app-login.component',
-  imports: [],
+  standalone: true,
+  selector: 'app-login',
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  correo = '';
+  contrasena = '';
 
+  constructor(private router: Router) {}
+
+  login() {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, this.correo, this.contrasena)
+      .then(() => {
+        this.router.navigate(['/peliculas']);
+      })
+      .catch(err => alert('Error al iniciar sesión: ' + err.message));
+  }
 }

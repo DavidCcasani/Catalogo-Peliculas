@@ -61,11 +61,11 @@
 }
 
 .tarjeta {
-  background: #1e1e1e; /* más oscuro */
+  background: black; /* más oscuro */
   color: #fff;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+  box-shadow: black;
   text-align: center;
 }
 .portada {
@@ -79,4 +79,61 @@
 
 .portada:hover {
   transform: scale(1.03);
+}
+.buscador {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 15px;
+  margin: 20px auto;
+  display: block;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  color: #fff;
+  font-size: 16px;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.buscador:focus {
+  outline: none;
+  border-color: #00bcd4;
+  box-shadow: 0 0 8px rgba(0, 188, 212, 0.5);
+}
+
+
+/* Contenedor de los filtros */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px 0;
+  align-items: center;
+}
+
+/* Estilo del input de búsqueda */
+.buscador {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  width: 350px;
+  background-color: #1e1e1e;
+  color: white;
+  outline: none;
+}
+
+/* Estilo del select */
+select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #1e1e1e;
+  color: white;
+  border: none;
+}
+
+/* Estilo del label */
+label {
+  font-weight: bold;
+  color: white;
 }

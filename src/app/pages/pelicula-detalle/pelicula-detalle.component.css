@@ -36,3 +36,9 @@
 .info strong {
   color: #fff;
 }
+
+.categoria {
+  font-weight: bold;
+  color: #00ffcc;
+  margin-top: 5px;
+}

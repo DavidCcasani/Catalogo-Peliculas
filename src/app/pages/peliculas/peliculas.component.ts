@@ -1,28 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // ← AÑADIR
-import { RouterModule, Router } from '@angular/router';
+import { CommonModule } from '@angular/common'; 
+import { RouterModule, Router } from '@angular/router'; 
 import { PeliculasService } from '../../services/peliculas.service';
 import { Pelicula } from '../../models/pelicula.model';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-peliculas',
-  standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule], // ← AÑADIR FormsModule
+  standalone: true, 
+  imports: [CommonModule,FormsModule, RouterModule,  ], // 👈 importa lo necesario
   templateUrl: './peliculas.component.html',
-  styleUrls: ['./peliculas.component.css']
+  styleUrl: './peliculas.component.css'
 })
 export class PeliculasComponent implements OnInit {
   peliculas: Pelicula[] = [];
-
-  // NUEVOS CAMPOS PARA FORMULARIO
-  mostrarFormulario = false;
-  peliculaNueva: Pelicula = {
-    titulo: '',
-    genero: '',
-    anio: new Date().getFullYear(),
-    director: ''
-  };
 
   constructor(
     private peliculasService: PeliculasService,
@@ -39,26 +31,30 @@ export class PeliculasComponent implements OnInit {
     if (id) this.router.navigate(['/editar', id]);
   }
 
-  eliminar(id: string) {
-    if (confirm('¿Estás seguro de eliminar esta película?')) {
-      this.peliculasService.eliminarPelicula(id)
-        .then(() => console.log('Película eliminada'))
-        .catch((error) => console.error('Error al eliminar:', error));
-    }
+eliminar(id: string) {
+  if (confirm('¿Estás seguro de eliminar esta película?')) {
+    this.peliculasService.eliminarPelicula(id)
+      .then(() => console.log('Película eliminada'))
+      .catch((error) => console.error('Error al eliminar:', error));
   }
+}
+busqueda: string = '';
+generoSeleccionado: string = 'Todos';
 
-  guardar() {
-    const p = this.peliculaNueva;
-    if (p.titulo && p.genero && p.anio && p.director) {
-      this.peliculasService.agregarPelicula(p).then(() => {
-        this.mostrarFormulario = false;
-        this.peliculaNueva = {
-          titulo: '',
-          genero: '',
-          anio: new Date().getFullYear(),
-          director: ''
-        };
-      });
-    }
-  }
+
+get peliculasFiltradas(): Pelicula[] {
+  const texto = this.busqueda.toLowerCase();
+  return this.peliculas.filter(p =>
+    (this.generoSeleccionado === 'Todos' || p.genero === this.generoSeleccionado) &&
+    (
+      p.titulo.toLowerCase().includes(texto) ||
+      p.genero.toLowerCase().includes(texto) ||
+      p.director.toLowerCase().includes(texto) ||
+      p.anio.toString().includes(texto)
+    )
+  );
+}
+
+
+
 }
