@@ -1,33 +1,56 @@
-<h2>Agregar Película</h2>
+<div class="toast" *ngIf="mostrarToast">
+    Película guardada con éxito
+</div>
 
-<form (ngSubmit)="guardar()">
-    <label>
-        Título:
-        <input [(ngModel)]="pelicula.titulo" name="titulo" required />
-    </label><br>
+<form [formGroup]="formulario" (ngSubmit)="guardar()" class="formulario-pelicula">
+  <label>
+    Título:
+    <input formControlName="titulo" />
+    <span *ngIf="formulario.get('titulo')?.invalid && formulario.get('titulo')?.touched">
+      El título es requerido.
+    </span>
+  </label>
 
-    <label>
-        Género:
-        <input [(ngModel)]="pelicula.genero" name="genero" required />
-    </label><br>
+  <label>
+    Género:
+    <input formControlName="genero" />
+    <span *ngIf="formulario.get('genero')?.invalid && formulario.get('genero')?.touched">
+      El género es requerido.
+    </span>
+  </label>
 
-    <label>
-        Año:
-        <input type="number" [(ngModel)]="pelicula.anio" name="anio" required />
-    </label><br>
+  <label>
+    Año:
+    <input type="number" formControlName="anio" />
+    <span *ngIf="formulario.get('anio')?.invalid && formulario.get('anio')?.touched">
+      Año inválido. Debe ser mayor a 1900.
+    </span>
+  </label>
 
-    <label>
-        Director:
-        <input [(ngModel)]="pelicula.director" name="director" required />
-    </label><br>
+  <label>
+    Director:
+    <input formControlName="director" />
+    <span *ngIf="formulario.get('director')?.invalid && formulario.get('director')?.touched">
+      El director es requerido.
+    </span>
+  </label>
 
-    <label>
-        Imagen (URL):
-        <input [(ngModel)]="pelicula.imagen" name="imagen" placeholder="https://..." />
-    </label><br>
-    <label>
-        Descripción:
-        <textarea [(ngModel)]="pelicula.descripcion" name="descripcion"></textarea>
-    </label><br>
-    <button type="submit">Guardar</button>
+  <label>
+    Descripción:
+    <textarea
+      formControlName="descripcion"
+      (input)="autoResize($event)"
+      rows="3"
+      placeholder="Descripción opcional..."></textarea>
+  </label>
+
+  <label>
+    Imagen (URL):
+    <input formControlName="imagen" />
+    <span *ngIf="formulario.get('imagen')?.invalid && formulario.get('imagen')?.touched">
+      La URL de la imagen es requerida.
+    </span>
+  </label>
+
+  <button type="submit" [disabled]="formulario.invalid">Guardar</button>
 </form>

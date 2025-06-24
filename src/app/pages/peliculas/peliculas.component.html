@@ -1,29 +1,51 @@
+<div class="buscador-centrado">
+  <div class="buscador-wrapper">
+    <input
+      type="text"
+      placeholder="Buscar por título, género, director o año..."
+      [(ngModel)]="busqueda"
+      class="buscador"
+    />
+    <span class="material-icons icono-lupa">search</span>
+  </div>
+</div>
+
+<div class="filtros-container">
+  <label>
+    Filtrar por género:
+    <select [(ngModel)]="generoSeleccionado" name="genero">
+      <option *ngFor="let genero of generos" [value]="genero">{{ genero }}</option>
+    </select>
+  </label>
+
+  <label>
+    Ordenar por:
+    <select [(ngModel)]="criterioOrden">
+      <option value="titulo">Título (A-Z)</option>
+      <option value="anio">Año (más reciente)</option>
+    </select>
+  </label>
+</div>
+
 <div class="header">
   <h2>Películas</h2>
   <a routerLink="/agregar" class="btn-agregar">Agregar nueva</a>
 </div>
 
-<label for="genero">Filtrar por género:       </label>
-<select [(ngModel)]="generoSeleccionado" name="genero">
-  <option value="Todos">Todos</option>
-  <option value="Acción">Acción</option>
-  <option value="Comedia">Comedia</option>
-  <option value="Drama">Drama</option>
-  <option value="Terror">Terror</option>
-  <option value="Animación">Animación</option>
-  
-</select>
+<!-- Estado: Cargando -->
+<div *ngIf="loading" class="estado-mensaje">
+  <p>🎬 Cargando películas...</p>
+</div>
 
-<input
-  type="text"
-  placeholder="Buscar por título, género, director o año..."
-  [(ngModel)]="busqueda"
-  class="buscador"
-/>
+<!-- Estado: Error -->
+<div *ngIf="errorCarga && !loading" class="estado-mensaje error">
+  <p>❌ Error al cargar las películas. Intenta nuevamente más tarde.</p>
+</div>
 
 
-<!-- Mostrar lista o mensaje vacío -->
-<ul class="lista" *ngIf="peliculasFiltradas.length > 0; else sinResultados">
+
+<!-- Lista de Películas -->
+<ul class="lista" *ngIf="!loading && !errorCarga && peliculasFiltradas.length > 0; else sinResultados">
   <li *ngFor="let pelicula of peliculasFiltradas">
     <a [routerLink]="['/pelicula', pelicula.id]" *ngIf="pelicula.imagen">
       <img [src]="pelicula.imagen" alt="{{pelicula.titulo}}" class="portada" />
@@ -35,6 +57,7 @@
   </li>
 </ul>
 
+<!-- Estado: Sin Resultados -->
 <ng-template #sinResultados>
-  <p>No hay películas registradas.</p>
+  <p *ngIf="!loading && !errorCarga" class="estado-mensaje">📭 No hay películas disponibles.</p>
 </ng-template>

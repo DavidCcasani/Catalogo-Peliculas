@@ -1,33 +1,52 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterModule, Router } from '@angular/router';
 import { PeliculasService } from '../../services/peliculas.service';
-import { Pelicula } from '../../models/pelicula.model';
 
 @Component({
   selector: 'app-agregar-pelicula',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './agregar-pelicula.component.html',
   styleUrls: ['./agregar-pelicula.component.css']
 })
 export class AgregarPeliculaComponent {
-  pelicula: Pelicula = {
-    titulo: '',
-    genero: '',
-    anio: new Date().getFullYear(),
-    director: ''
-  };
+  formulario: FormGroup;
+  errorMsg: string = '';
 
-  constructor(private peliculasService: PeliculasService, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private peliculasService: PeliculasService,
+    private router: Router
+  ) {
+    this.formulario = this.fb.group({
+      titulo: ['', Validators.required],
+      genero: ['', Validators.required],
+      anio: [new Date().getFullYear(), [Validators.required, Validators.min(1900)]],
+      director: ['', Validators.required],
+      imagen: ['', Validators.required],
+      descripcion: ['']
+    });
+  }
 
   guardar() {
-    this.peliculasService.agregarPelicula(this.pelicula).then(() => {
-      alert('Película guardada con éxito');
-      this.router.navigate(['/peliculas']);
-    }).catch(err => {
-      alert('Error al guardar: ' + err.message);
-    });
+    if (this.formulario.valid) {
+      this.peliculasService.agregarPelicula(this.formulario.value).then(() => {
+        this.router.navigate(['/peliculas']);
+      }).catch(err => {
+        this.errorMsg = 'Error al guardar: ' + err.message;
+        setTimeout(() => this.errorMsg = '', 4000); // Ocultar mensaje tras 4 segundos
+      });
+    } else {
+      this.errorMsg = 'Completa todos los campos requeridos';
+      setTimeout(() => this.errorMsg = '', 3000);
+    }
+  }
+
+  autoResize(event: Event) {
+    const textarea = event.target as HTMLTextAreaElement;
+    textarea.style.height = 'auto';
+    textarea.style.height = `${textarea.scrollHeight}px`;
   }
 }
