@@ -14,7 +14,7 @@ import { PeliculasService } from '../../services/peliculas.service';
 export class AgregarPeliculaComponent {
   formulario: FormGroup;
   errorMsg: string = '';
-  mostrarToast: boolean = false; 
+  mostrarToast: boolean = false;  
 
   constructor(
     private fb: FormBuilder,
