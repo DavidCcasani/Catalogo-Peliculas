@@ -1,0 +1,16 @@
+<h2>Iniciar Sesión</h2>
+<form (ngSubmit)="login()">
+  <label>
+    Correo:
+    <input type="email" [(ngModel)]="correo" name="correo" required />
+  </label><br>
+  <label>
+    Contraseña:
+    <input type="password" [(ngModel)]="contrasena" name="contrasena" required />
+  </label><br>
+  <button type="submit">Iniciar Sesión</button>
+</form>
+<p style="text-align: center; margin-top: 20px;">
+  ¿No tienes una cuenta?
+  <a routerLink="/registro" style="color: #ff3c3c; font-weight: bold;">Regístrate aquí</a>
+</p>

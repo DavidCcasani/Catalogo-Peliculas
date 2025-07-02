@@ -1,0 +1,28 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <img src="https://www.max.com/img/max/max_logo_nav.png" alt="Logo" class="logo" />
+    <a routerLink="/" class="titulo">Inicio</a>
+    <a routerLink="/peliculas" routerLinkActive="activo">Películas</a>
+  </div>
+
+  <div class="navbar-right">
+    <ng-container *ngIf="authService.getUser(); else noSesion">
+      <span class="usuario">{{ authService.getUser()?.email }}</span>
+      <span class="rol">Rol: {{ authService.getRol() }}</span>
+
+      <!-- Solo visible si el usuario es admin -->
+      <a *ngIf="authService.getRol() === 'admin'" routerLink="/admin" class="btn-admin">Panel Admin</a>
+
+      <button (click)="logout()" class="btn-salir">Cerrar sesión</button>
+    </ng-container>
+
+    <ng-template #noSesion>
+      <a routerLink="/login" routerLinkActive="activo">Login</a>
+      <a routerLink="/registro" routerLinkActive="activo">Registro</a>
+    </ng-template>
+  </div>
+</nav>
+
+<main class="contenido">
+  <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,70 @@
+/* ===== Estilo Global: Fondo negro y letras blancas ===== */
+body {
+  padding: 10px;
+  margin: 0;
+  background-color: black;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Quitar decoraciones de enlaces */
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ==== NAVBAR ==== */
+.navbar {
+  background-color: #000;
+  padding: 5px 2px ;
+  display: flex;
+  justify-content: space-between; /* Divide en dos lados */
+  align-items: center;
+  box-shadow: 0 0px 0px rgba(255, 255, 255, 0.1);
+  position: sticky;
+}
+
+.navbar-left,
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar a {
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.navbar a.activo {
+  border-bottom: 2px solid #ffffff;
+}
+
+.logo {
+  height: 32px;
+  margin-right: 10px;
+}
+
+.titulo {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.usuario {
+  font-weight: bold;
+  color: white;
+}
+
+.btn-salir {
+  padding: 5px 10px;
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}

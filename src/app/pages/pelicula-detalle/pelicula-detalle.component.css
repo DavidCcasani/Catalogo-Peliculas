@@ -1,0 +1,44 @@
+.detalle-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: black;
+  color: #ffffff;
+  flex-wrap: wrap;
+  border-radius: 10px;
+}
+
+.portada {
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.info {
+  max-width: 300px;
+  margin-top: 5rem;
+}
+
+.info h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.info p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: #ccc;
+}
+
+.info strong {
+  color: #fff;
+}
+
+.categoria {
+  font-weight: bold;
+  color: #00ffcc;
+  margin-top: 5px;
+}

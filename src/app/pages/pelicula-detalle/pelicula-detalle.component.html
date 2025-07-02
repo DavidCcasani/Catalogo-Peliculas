@@ -1,0 +1,25 @@
+<div *ngIf="pelicula; else cargando" class="detalle-container">
+
+  <div class="imagen-con-titulo">
+    <h1 class="titulo">{{ pelicula.titulo | capitalizar }}</h1>
+    <img *ngIf="pelicula.imagen" [src]="pelicula.imagen" alt="Portada" class="portada" />
+    
+
+  </div>
+
+  <div class="info">
+    <h2>Sinopsis</h2>
+    <p *ngIf="pelicula.descripcion">
+      {{ pelicula.descripcion }}
+    </p>
+    <p><strong>Género:</strong> {{ pelicula.genero | generoEmoji }}</p>
+    <p><strong>Año:</strong> {{ pelicula.anio | estreno }}</p>
+    <p><strong>Director:</strong> {{ pelicula.director }}</p>
+    
+  </div>
+
+</div>
+
+<ng-template #cargando>
+  <p>Cargando detalles...</p>
+</ng-template>

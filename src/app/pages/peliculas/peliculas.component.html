@@ -1,0 +1,80 @@
+<!-- 🔍 Buscador centrado con icono -->
+<div class="buscador-centrado">
+  <div class="buscador-wrapper">
+    <input
+      type="text"
+      placeholder="Buscar por título, género, director o año..."
+      [(ngModel)]="busqueda"
+      class="buscador"
+    />
+    <span class="material-icons icono-lupa">search</span>
+  </div>
+</div>
+
+<!-- 🎛️ Filtros -->
+<div class="filtros-container">
+  <label>
+    Filtrar por género:
+    <select [(ngModel)]="generoSeleccionado" name="genero">
+      <option *ngFor="let genero of generos" [value]="genero">{{ genero }}</option>
+    </select>
+  </label>
+
+  <label>
+    Ordenar por:
+    <select [(ngModel)]="criterioOrden">
+      <option value="titulo">Título (A-Z)</option>
+      <option value="anio">Año (más reciente)</option>
+    </select>
+  </label>
+</div>
+
+<!-- 📌 Encabezado y botón de agregar (solo admins) -->
+<div class="header">
+  <h2>Películas</h2>
+  <a
+    *ngIf="rolUsuario === 'admin'"
+    routerLink="/agregar"
+    class="btn-agregar"
+  >
+    Agregar nueva
+  </a>
+</div>
+
+<!-- ⏳ Cargando -->
+<div *ngIf="loading" class="estado-mensaje">
+  <p>🎬 Cargando películas...</p>
+</div>
+
+<!-- ❌ Error -->
+<div *ngIf="errorCarga && !loading" class="estado-mensaje error">
+  <p>❌ Error al cargar las películas. Intenta nuevamente más tarde.</p>
+</div>
+
+<!-- 🎞️ Lista de Películas -->
+<ul
+  class="lista"
+  *ngIf="!loading && !errorCarga && peliculasFiltradas.length > 0; else sinResultados"
+>
+  <li *ngFor="let pelicula of peliculasFiltradas" class="tarjeta">
+    <a [routerLink]="['/pelicula', pelicula.id]" *ngIf="pelicula.imagen">
+      <img [src]="pelicula.imagen" alt="{{ pelicula.titulo }}" class="portada" />
+    </a>
+
+
+
+    <!-- 🔧 Acciones solo si es admin -->
+    <div class="acciones" *ngIf="rolUsuario === 'admin'">
+      <button (click)="editar(pelicula.id)">Editar</button>
+      <button (click)="eliminar(pelicula.id!)">Eliminar</button>
+    </div>
+  </li>
+</ul>
+
+<!-- 📭 Sin resultados -->
+<ng-template #sinResultados>
+  <p *ngIf="!loading && !errorCarga" class="estado-mensaje">
+    📭 No hay películas disponibles.
+  </p>
+</ng-template>
+

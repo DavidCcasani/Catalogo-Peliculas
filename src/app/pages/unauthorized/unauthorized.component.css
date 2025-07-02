@@ -1,0 +1,11 @@
+/* unauthorized.component.css */
+.unauthorized {
+  text-align: center;
+  margin-top: 80px;
+  color: #ff4c4c;
+}
+
+.unauthorized a {
+  color: #00bcd4;
+  text-decoration: underline;
+}

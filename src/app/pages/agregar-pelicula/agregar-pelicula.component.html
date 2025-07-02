@@ -1,0 +1,58 @@
+<div class="toast" *ngIf="mostrarToast">
+    Película guardada con éxito
+</div>
+
+<form [formGroup]="formulario" (ngSubmit)="guardar()" class="formulario-pelicula">
+  <label>
+    Título:
+    <input formControlName="titulo" />
+    <span *ngIf="formulario.get('titulo')?.invalid && formulario.get('titulo')?.touched">
+      El título es requerido.
+    </span>
+  </label>
+
+  <label>
+    Género:
+    <input formControlName="genero" />
+    <span *ngIf="formulario.get('genero')?.invalid && formulario.get('genero')?.touched">
+      El género es requerido.
+    </span>
+  </label>
+
+  <label>
+    Año:
+    <input type="number" formControlName="anio" />
+    <span *ngIf="formulario.get('anio')?.invalid && formulario.get('anio')?.touched">
+      Año inválido. Debe ser mayor a 1900.
+    </span>
+  </label>
+
+  <label>
+    Director:
+    <input formControlName="director" />
+    <span *ngIf="formulario.get('director')?.invalid && formulario.get('director')?.touched">
+      El director es requerido.
+    </span>
+  </label>
+
+  <label>
+    Descripción:
+    <textarea
+      formControlName="descripcion"
+      (input)="autoResize($event)"
+      rows="3"
+      placeholder="Descripción opcional..."></textarea>
+  </label>
+
+<label>
+  Imagen:
+  <input type="file" (change)="onFileSelected($event)" />
+</label>
+
+<img *ngIf="imagenURL" [src]="imagenURL" width="150" />
+
+
+  
+
+  <button type="submit" [disabled]="formulario.invalid">Guardar</button>
+</form>

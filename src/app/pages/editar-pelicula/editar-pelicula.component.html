@@ -1,0 +1,61 @@
+<div @fadeIn>
+<h2>Editar Película</h2>
+
+<div class="toast" *ngIf="mostrarToast">
+  Película actualizada correctamente
+</div>
+
+<form [formGroup]="formulario" (ngSubmit)="guardarCambios()" class="formulario">
+  <div class="campo">
+    <label for="titulo">Título:</label>
+    <input id="titulo" type="text" formControlName="titulo" />
+    <div class="error" *ngIf="formulario.get('titulo')?.touched && formulario.get('titulo')?.invalid">
+      El título es obligatorio.
+    </div>
+  </div>
+
+  <div class="campo">
+    <label for="genero">Género:</label>
+    <input id="genero" type="text" formControlName="genero" />
+    <div class="error" *ngIf="formulario.get('genero')?.touched && formulario.get('genero')?.invalid">
+      El género es obligatorio.
+    </div>
+  </div>
+
+  <div class="campo">
+    <label for="anio">Año:</label>
+    <input id="anio" type="number" formControlName="anio" />
+    <div class="error" *ngIf="formulario.get('anio')?.touched && formulario.get('anio')?.invalid">
+      El año debe ser mayor a 1900.
+    </div>
+  </div>
+
+  <div class="campo">
+    <label for="director">Director:</label>
+    <input id="director" type="text" formControlName="director" />
+    <div class="error" *ngIf="formulario.get('director')?.touched && formulario.get('director')?.invalid">
+      El director es obligatorio.
+    </div>
+  </div>
+
+  <div class="campo">
+    <label for="descripcion">Descripción:</label>
+    <textarea id="descripcion" formControlName="descripcion"></textarea>
+  </div>
+
+<div class="campo">
+  <label for="imagen">Imagen actual:</label>
+  <img *ngIf="formulario.get('imagen')?.value" [src]="formulario.get('imagen')?.value" width="150" />
+</div>
+
+<div class="campo">
+  <label for="imagenNueva">Cambiar imagen:</label>
+  <input type="file" (change)="uploadImage($event)" id="imagenNueva" />
+</div>
+
+
+  <div class="boton-centrado">
+  <button type="submit" [disabled]="formulario.invalid">Guardar Cambios</button>
+</div>
+</form>
+</div>
