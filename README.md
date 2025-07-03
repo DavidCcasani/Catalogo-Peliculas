@@ -1,59 +1,109 @@
-# CatalogoPeliculas1
+# 🎬 Catálogo de Películas
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
+Aplicación web desarrollada con Angular para registrar, visualizar, editar y eliminar información de películas. Implementa autenticación de usuarios, roles, subida de imágenes a Cloudinary y base de datos en tiempo real con Firebase Firestore.
 
-## Development server
+---
 
-To start a local development server, run:
+## 📌 Nombre y Descripción del Proyecto
 
-```bash
-ng serve
-```
+**Nombre:** Catálogo de Películas  
+**Descripción:** Sistema web que permite a los usuarios gestionar un catálogo de películas. Incluye funcionalidades de búsqueda, filtrado por género, ordenamiento, autenticación con diferentes roles (admin/usuario), y subida de imágenes.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🛠️ Tecnologías y Herramientas Utilizadas
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Angular 17+
+- TypeScript
+- Firebase (Authentication + Firestore)
+- Cloudinary (para almacenamiento de imágenes)
+- GitHub Pages (despliegue alternativo)
+- HTML & CSS
+- Angular Animations
+- Angular CLI
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## ⚙️ Requisitos para Instalar y Ejecutar
 
-```bash
-ng generate --help
-```
+1. Tener **Node.js** instalado (v18 o superior recomendado).
+2. Instalar Angular CLI:
+   
+   npm install -g @angular/cli
 
-## Building
 
-To build the project run:
+3. Clonar este repositorio:
 
-```bash
-ng build
-```
+   git clone https://github.com/DavidCcasani/Catalogo-Peliculas.git
+   cd Catalogo-Peliculas
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+4. Instalar dependencias:
 
-## Running unit tests
+   npm install
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+5. Ejecutar en desarrollo:
 
-```bash
-ng test
-```
+   ng serve
+   
+6. Abrir el navegador en:
+   [http://localhost:4200](http://localhost:4200)
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## 🧱 Breve Descripción de la Arquitectura
 
-```bash
-ng e2e
-```
+La aplicación está estructurada en componentes y servicios, siguiendo buenas prácticas modulares:
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### 📦 Componentes Principales
 
-## Additional Resources
+- **InicioComponent**: Página principal de bienvenida.
+- **PeliculasComponent**: Muestra la lista de películas con filtros y ordenamiento.
+- **AgregarPeliculaComponent**: Formulario para registrar nuevas películas (rol admin).
+- **EditarPeliculaComponent**: Permite modificar películas existentes (rol admin).
+- **Login/RegisterComponent**: Módulos de autenticación.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### 🔧 Servicios
+
+* **AuthService**: Gestión de autenticación y roles (Firestore + Firebase Auth).
+* **PeliculasService**: CRUD sobre la colección `peliculas` en Firestore.
+* **Guards**: Protección de rutas (solo acceso a admins o usuarios autenticados).
+
+---
+
+## 🌐 URLs de Entregables
+
+* ✅ **GitHub Pages**:
+  🔗 [https://DavidCcasani.github.io/Catalogo-Peliculas](https://DavidCcasani.github.io/Catalogo-Peliculas)
+
+* ✅ **Video Explicativo (5–8 minutos)**:
+  🎥
+
+---
+
+## 📋 Funcionalidades Presentadas en el Video
+
+* Registro e inicio de sesión con Firebase Authentication.
+* Visualización y filtrado de películas.
+* Registro, edición y eliminación (solo admin).
+* Subida de imágenes a Cloudinary.
+* Lectura y escritura en Firebase Firestore.
+* Explicación del código fuente (componentes, servicios y guards).
+
+---
+
+## ✅ Entregables Completados
+
+* [x] Código fuente con estructura clara y funcional.
+* [x] README.md completo con descripción técnica.
+* [x] Por lo menos 2 commits por semana.
+* [x] Docente `ivansoriasolis` invitado como colaborador.
+* [x] Hosting GitHub Pages.
+* [x] Video explicativo entre 5 y 8 minutos.
+
+---
+
+> 🧑‍💻 Proyecto realizado por **David Johan Ccasani Oscco**
+> Curso: **Programación Web con Angular**
+> Año: **2025**
+
+
