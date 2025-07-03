@@ -1,0 +1,1 @@
+import{Ga as i,Na as s,Ua as u,Va as c,d as n,q as t,za as a}from"./chunk-J5HE3GJU.js";var j=f=>()=>n(null,null,function*(){let m=t(i),d=t(s),r=t(a),e=m.currentUser;if(!e)return r.navigate(["/login"]),!1;let p=u(d,`usuarios/${e.uid}`),o=yield c(p);return o.exists()&&o.data().rol===f?!0:(r.navigate(["/unauthorized"]),!1)});export{j as a};
