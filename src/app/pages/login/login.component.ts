@@ -21,7 +21,7 @@ export class LoginComponent {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, this.correo, this.contrasena)
       .then(() => {
-        this.router.navigate(['/peliculas']);
+        this.router.navigate(['/']);
       })
       .catch(err => alert('Error al iniciar sesión: ' + err.message));
   }
