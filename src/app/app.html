@@ -11,7 +11,7 @@
       <span class="rol">Rol: {{ authService.getRol() }}</span>
 
       <!-- Solo visible si el usuario es admin -->
-      <a *ngIf="authService.getRol() === 'admin'" routerLink="/admin" class="btn-admin">Panel Admin</a>
+      
 
       <button (click)="logout()" class="btn-salir">Cerrar sesión</button>
     </ng-container>
