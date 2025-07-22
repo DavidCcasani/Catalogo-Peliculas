@@ -76,8 +76,8 @@ La aplicación está estructurada en componentes y servicios, siguiendo buenas p
   🔗 [https://DavidCcasani.github.io/Catalogo-Peliculas](https://DavidCcasani.github.io/Catalogo-Peliculas)
 
 * ✅ **Video Explicativo (5–8 minutos)**:
-  🎥
-
+  🎥 https://drive.google.com/file/d/1OY_TMuzzmWQyXqdSxtUR_np8uPpADAKy/view?usp=sharing
+  
 ---
 
 ## 📋 Funcionalidades Presentadas en el Video
